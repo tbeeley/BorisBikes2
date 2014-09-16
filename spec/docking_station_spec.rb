@@ -8,8 +8,6 @@ describe 'DockingStation' do
 
 	context 'when created' do
 
-
-
 		it 'should not have any bikes' do
 			expect(station.bike_count).to eq 0
 		end
@@ -21,6 +19,11 @@ describe 'DockingStation' do
 		it 'should know when it is full' do
 			20.times { station.accept(bike) }
 			expect(station.full?).to be true
+		end
+
+		it 'should know when it is empty' do
+			expect(station.bike_count).to eq 0
+			expect(station.empty?).to eq true
 		end
 
 	end
@@ -40,16 +43,17 @@ describe 'DockingStation' do
 
 		it 'should not accept a bike if full' do
 			20.times { station.accept(bike) }
-			expect(lambda { station.accept(bike) }).to raise_error(RuntimeError)
+			expect(lambda { station.accept(bike) }).to raise_error('This station is full')
 		end
 
 		it 'should not release a bike if empty' do
 			expect(station.bike_count).to eq 0
-			expect(lambda { station.release(bike) }).to raise_error(RuntimeError)
+			expect(lambda { station.release(bike) }).to raise_error('There are no available bikes')
 		end
 
 		it 'should not release a bike if broken' do
-			expect(lambda { station.release(broken_bike) }).to raise_error(RuntimeError)
+			station.accept(broken_bike)
+			expect(lambda { station.release(broken_bike) }).to raise_error('This bike is broken')
 
 		end
 
