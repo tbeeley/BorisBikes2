@@ -1,6 +1,6 @@
-require 'bikes'
+require 'bike'
 
-describe 'bikes' do
+describe 'Bike' do
 
 	let (:bike) { Bike.new }
 
@@ -11,9 +11,17 @@ describe 'bikes' do
 	end
 
 	context 'after creation' do
+
 		it 'should be able to be broken' do
-			bike.break
+			bike.break!
 			expect(bike).to be_broken
+		end
+
+		it 'should be able to be fixed' do
+			bike.break!
+			expect(bike).to be_broken
+			bike.fix!
+			expect(bike).not_to be_broken
 		end
 
 	end
