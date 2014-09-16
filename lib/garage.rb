@@ -1,4 +1,4 @@
-class Van
+class Garage
 
 	include BikeContainer
 
@@ -8,5 +8,11 @@ class Van
 	end
 
 	attr_accessor :bikes, :capacity
+
+	def accept(bike)
+		raise 'This container is full' if full?
+		bike.fix!
+		@bikes << bike
+	end
 
 end
