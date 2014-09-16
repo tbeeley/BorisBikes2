@@ -10,4 +10,8 @@ class DockingStation
 		@bikes.count
 	end
 
+	def accept(bike)
+		@bikes << bike
+	end
+
 end
