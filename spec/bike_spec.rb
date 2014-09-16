@@ -1,6 +1,6 @@
 require 'bike'
 
-describe 'Bike' do
+describe Bike do
 
 	let (:bike) { Bike.new }
 
