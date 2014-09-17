@@ -1,11 +1,8 @@
 class Bike
 
 	def initialize
-		# @broken = broken
-		self.fix!
+		fix!
 	end
-
-	attr_accessor :broken
 
 	def broken?
 		@broken
