@@ -4,10 +4,12 @@ module BikeContainer
 
 	def bikes
 		@bikes ||= []
+		#These are accessor methods. Modules cannot be instantiated, so these are necessary.
 	end
 
 	def capacity
 		@capacity ||= DEFAULT_CAPACITY
+		# The ||= symbol just signifies that it will default to DEFAULT_CAPACITY if @capacity is nil. It means @capacity = @capacity || DEFAULT_CAPACITY
 	end
 
 	def bike_count
@@ -28,13 +30,25 @@ module BikeContainer
 	end
 
 	def available_bikes
-		bikes.delete_if { |bike| bike.broken? }
-		bikes.count
+		sort_broken_bikes
+		bike_count
 	end
 
 	def release(bike)
 		raise 'There are no available bikes' if empty?
 		@bikes.delete(bike)
+	end
+
+	def working_bikes
+		sort_broken_bikes
+	end
+
+	def sort_broken_bikes
+		bikes.delete_if { |bike| bike.broken? }
+	end
+
+	def broken_bikes
+		bikes.delete_if { |bike| !bike.broken? }
 	end
 
 end
