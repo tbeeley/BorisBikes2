@@ -4,7 +4,7 @@ describe Garage do
 
 	let(:garage) 		{ Garage.new }
 	let(:bike) 			{ Bike.new}
-	let(:broken_bike) 	{ Bike.new(true)}
+	let(:broken_bike) 	{ Bike.new.break!}
 
 	it 'should have no bikes when created' do
 		expect(garage.bike_count).to eq 0

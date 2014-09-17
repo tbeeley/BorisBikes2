@@ -10,7 +10,7 @@ class Garage
 	attr_accessor :bikes, :capacity
 
 	def accept(bike)
-		raise 'This container is full' if full?
+		raise 'This Garage is full' if full?
 		bike.fix!
 		@bikes << bike
 	end

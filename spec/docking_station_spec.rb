@@ -4,7 +4,7 @@ describe DockingStation do
 
 	let(:station) { DockingStation.new  }
 	let(:bike) 			  { Bike.new	}
-	let(:broken_bike) { Bike.new (true) }
+	let(:broken_bike) { Bike.new.break! }
 
 	it 'should not release a bike if broken' do
 		station.accept(broken_bike)

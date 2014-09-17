@@ -7,7 +7,7 @@ class ContainerHolder; include BikeContainer
 
 		let(:container) 	{ ContainerHolder.new  }
 		let(:bike) 			{ Bike.new	}
-		let(:broken_bike) { Bike.new (true) }
+		let(:broken_bike) { Bike.new.break! }
 
 
 		context 'when created' do
