@@ -1,10 +1,5 @@
 require 'bike_container'
 
-
-# class ContainerHolder; include BikeContainer
-
-# 	describe BikeContainer do
-
 shared_examples 'a bike container' do
 
 	let(:container) 	{ described_class.new }
@@ -80,5 +75,3 @@ shared_examples 'a bike container' do
 
 	end
 end
-# 	end
-# end

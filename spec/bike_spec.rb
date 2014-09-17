@@ -5,9 +5,11 @@ describe Bike do
 	let (:bike) { Bike.new }
 
 	context 'when created' do
+
 		it 'should not be broken' do
 			expect(bike).not_to be_broken
 		end
+
 	end
 
 	context 'after creation' do
@@ -19,7 +21,6 @@ describe Bike do
 
 		it 'should be able to be fixed' do
 			bike.break!
-			expect(bike).to be_broken
 			bike.fix!
 			expect(bike).not_to be_broken
 		end
