@@ -7,7 +7,7 @@ describe Van do
 	let(:broken_bike) { double :bike, broken?: true }
 	let(:station) { double :docking_station, broken_bikes: [broken_bike], release: broken_bike}
 	let(:another_station) { double :docking_station}
-	let(:garage) 		{ double :garage}
+	let(:garage) 		{ double :garage, accept: nil}
 
 	it_behaves_like 'a bike container'
 
@@ -20,5 +20,10 @@ describe Van do
 		expect(van.bikes).to eq [broken_bike]
 	end
 
+	it 'should release the broken bikes at the garage' do
+		van.bikes = [broken_bike]
+		van.deposit_bikes_at(garage)
+		expect(van.broken_bikes).to eq []
+	end
 
 end
