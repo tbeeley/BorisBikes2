@@ -3,6 +3,7 @@ require 'garage'
 describe Garage do
 
 	let(:garage) 		{ Garage.new }
+	let(:broken_bike)	{ double :bike, broken?: true }
 
 	it_behaves_like 'a bike container'
 
@@ -11,9 +12,9 @@ describe Garage do
 	end
 
 	it 'should fix all bikes' do
-		broken_bike = double :bike, broken?: true
+		garage.broken_bikes = [broken_bike]
 		expect(broken_bike).to receive(:fix!)
-		garage.take_in(broken_bike)
+		garage.fix_all_bikes
 	end
 
 end

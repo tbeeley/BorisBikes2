@@ -6,10 +6,8 @@ describe DockingStation do
 
 	it_behaves_like 'a bike container'
 
-	it 'should not release a bike if broken' do
-		broken_bike = double :bike, broken?: true, instance_of?: 'Bike'
-		station.accept(broken_bike)
-		expect(lambda { station.release(broken_bike) }).to raise_error('This bike is broken')
+	it 'is empty when created' do
+		expect(station).to be_empty
 	end
 
 end

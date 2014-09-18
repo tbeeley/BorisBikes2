@@ -22,11 +22,6 @@ shared_examples 'a bike container' do
 
 	context 'bike container' do
 
-		it 'should know when it is full' do
-			20.times { container.accept(working_bike) }
-			expect(container.full?).to be true
-		end
-
 		it 'should know when it is empty' do
 			expect(container.bike_count).to eq 0
 			expect(container.empty?).to eq true
@@ -52,6 +47,22 @@ shared_examples 'a bike container' do
 
 	end
 
+	context 'when full' do
+
+		before do
+			20.times { container.accept(working_bike) }
+		end
+
+		it 'should know when it is full' do
+			expect(container.full?).to be true
+		end
+
+		it 'should not accept a bike if full' do
+			expect(lambda { container.accept(working_bike) }).to raise_error('This container is full')
+		end
+
+	end
+
 	context 'docking and releasing' do
 
 		it 'should be able to dock a bike' do
@@ -63,11 +74,6 @@ shared_examples 'a bike container' do
 			container.accept(working_bike)
 			container.release(working_bike)
 			expect(container.bike_count).to eq 0
-		end
-
-		it 'should not accept a bike if full' do
-			20.times { container.accept(working_bike) }
-			expect(lambda { container.accept(working_bike) }).to raise_error('This container is full')
 		end
 
 		it "should raise an error before a non-bike is released" do

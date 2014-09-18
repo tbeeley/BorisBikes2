@@ -11,10 +11,10 @@ class DockingStation
 
 	attr_accessor :bikes, :capacity
 
-	def release(bike)
-		raise "We can't give you what you're asking for" if (!bikes.include?(bike))
-		raise 'This bike is broken' if bike.broken?
-		@bikes.delete(bike)
-	end
+	# def release(bike)
+	# 	raise "We can't give you what you're asking for" if (!bikes.include?(bike))
+	# 	raise 'This bike is broken' if bike.broken?
+	# 	@bikes.delete(bike)
+	# end
 
 end

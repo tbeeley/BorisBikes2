@@ -1,3 +1,5 @@
+require_relative 'bike_container'
+
 class Van
 
 	include BikeContainer
@@ -28,6 +30,7 @@ class Van
 
 	def deposit_bikes_at(garage)
 		broken_bikes.each {|bike| give_bike_to(garage, bike) }
+		garage.fix_all_bikes
 	end
 
 
