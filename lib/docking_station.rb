@@ -9,6 +9,6 @@ class DockingStation
 		@capacity = capacity
 	end
 
-	attr_accessor :capacity
+	attr_accessor :capacity, :bikes
 
 end

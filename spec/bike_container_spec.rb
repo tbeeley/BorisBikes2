@@ -66,7 +66,7 @@ shared_examples 'a bike container' do
 
 	context 'docking and releasing' do
 
-		it 'should be able to dock a bike' do
+		it 'should be able to accept a bike' do
 			container.accept(working_bike)
 			expect(container.bike_count).to eq 1
 		end

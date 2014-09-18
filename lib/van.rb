@@ -23,7 +23,6 @@ class Van
 		garage.working_bikes.each {|bike| take_bike_from(garage, bike)}
 	end
 
-
 	def give_bike_to(container, bike)
 		container.accept(release(bike))
 	end

@@ -14,12 +14,7 @@ module BikeContainer
 
 	def bike_count
 		bikes.count
-	end
-
-	def accept(bike)
-		raise 'That aint no bike' if (!bike.instance_of?(Bike))
-		raise 'This container is full' if full?
-		@bikes << bike
+		#can't access bikes.count because it's a module
 	end
 
 	def full?
@@ -30,9 +25,10 @@ module BikeContainer
 		bike_count == 0
 	end
 
-	def available_bikes
-		sort_broken_bikes
-		bike_count
+	def accept(bike)
+		raise 'That aint no bike' if (!bike.instance_of?(Bike))
+		raise 'This container is full' if full?
+		@bikes << bike
 	end
 
 	def release(bike)
@@ -40,16 +36,20 @@ module BikeContainer
 		@bikes.delete(bike)
 	end
 
+	def broken_bikes
+		bikes.delete_if { |bike| !bike.broken? }
+	end
+
 	def working_bikes
 		sort_broken_bikes
+	end
+
+	def available_bikes
+		sort_broken_bikes
+		bike_count
 	end
 
 	def sort_broken_bikes
 		bikes.delete_if { |bike| bike.broken? }
 	end
-
-	def broken_bikes
-		bikes.delete_if { |bike| !bike.broken? }
-	end
-
 end
