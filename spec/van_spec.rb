@@ -3,8 +3,8 @@ require 'van'
 describe Van do
 
 	let(:van) { Van.new }
-	let(:working_bike) { double :bike, broken?: false }
-	let(:broken_bike) { double :bike, broken?: true }
+	let(:working_bike) { double :bike, broken?: false, instance_of?: 'Bike' }
+	let(:broken_bike) { double :bike, broken?: true, instance_of?: 'Bike' }
 	let(:station) { double :docking_station, broken_bikes: [broken_bike], working_bikes: [working_bike], release: broken_bike, accept: nil}
 	let(:garage) 		{ double :garage, working_bikes: [working_bike], accept: nil, release: working_bike}
 

@@ -3,8 +3,9 @@ require 'bike_container'
 shared_examples 'a bike container' do
 
 	let(:container) 	{ described_class.new }
-	let(:working_bike) { double :bike, broken?: false }
-	let(:broken_bike) { double :bike, broken?: true }
+	let(:working_bike) { double :bike, broken?: false, instance_of?: 'Bike' }
+	let(:broken_bike) { double :bike, broken?: true, instance_of?: 'Bike' }
+	let(:garage) { double :garage }
 
 
 	context 'when created' do
@@ -71,6 +72,10 @@ shared_examples 'a bike container' do
 
 		it 'should not release a bike if empty' do
 			expect(lambda { container.release(working_bike) }).to raise_error('There are no available bikes')
+		end
+
+		it 'should raise an error before a non-bike is accepted' do
+			expect(lambda {container.accept(garage)}).to raise_error('That aint no bike')
 		end
 
 	end
