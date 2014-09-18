@@ -7,6 +7,10 @@ shared_examples 'a bike container' do
 	let(:broken_bike) { double :bike, broken?: true, instance_of?: 'Bike' }
 	let(:garage) { double :garage }
 
+	def different_bikes
+		container.accept(working_bike)
+		container.accept(broken_bike)
+	end
 
 	context 'when created' do
 
@@ -20,28 +24,25 @@ shared_examples 'a bike container' do
 
 	end
 
-	context 'bike container' do
+	context 'should know' do
 
-		it 'should know when it is empty' do
+		it 'it is empty' do
 			expect(container.bike_count).to eq 0
 			expect(container.empty?).to eq true
 		end
 
-		it 'should know how many bikes are available' do
-			container.accept(working_bike)
-			container.accept(broken_bike)
+		it 'how many bikes are available' do
+			different_bikes
 			expect(container.available_bikes).to eq 1
 		end
 
-		it 'should have a list of working bikes' do
-			container.accept(working_bike)
-			container.accept(broken_bike)
+		it 'its working bikes' do
+			different_bikes
 			expect(container.working_bikes).to eq [working_bike]
 		end
 
-		it 'should have a list of broken bikes' do
-			container.accept(working_bike)
-			container.accept(broken_bike)
+		it 'its broken bikes' do
+			different_bikes
 			expect(container.broken_bikes).to eq [broken_bike]
 		end
 
