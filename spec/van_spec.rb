@@ -5,9 +5,8 @@ describe Van do
 	let(:van) { Van.new }
 	let(:working_bike) { double :bike, broken?: false }
 	let(:broken_bike) { double :bike, broken?: true }
-	let(:station) { double :docking_station, broken_bikes: [broken_bike], release: broken_bike}
-	let(:another_station) { double :docking_station}
-	let(:garage) 		{ double :garage, accept: nil}
+	let(:station) { double :docking_station, broken_bikes: [broken_bike], working_bikes: [working_bike], release: broken_bike, accept: nil}
+	let(:garage) 		{ double :garage, working_bikes: [working_bike], accept: nil, release: working_bike}
 
 	it_behaves_like 'a bike container'
 
@@ -16,7 +15,7 @@ describe Van do
 	end
 
 	it 'should collect broken bikes from the docking_station' do
-		van.collect_bikes_from(station)
+		van.collect_broken_bikes_from(station)
 		expect(van.bikes).to eq [broken_bike]
 	end
 
@@ -24,6 +23,18 @@ describe Van do
 		van.bikes = [broken_bike]
 		van.deposit_bikes_at(garage)
 		expect(van.broken_bikes).to eq []
+	end
+
+	it 'should collect the fixed bikes from the garage' do
+		van.bikes = []
+		van.collect_fixed_bikes_from(garage)
+		expect(van.bikes).to eq [working_bike]
+	end
+
+	it 'should release the fixed bikes at the station' do
+		van.bikes = [working_bike]
+		van.deposit_fixed_bikes_at(station)
+		expect(van.bikes).to eq []
 	end
 
 end
