@@ -9,20 +9,30 @@ class Van
 
 	attr_accessor :bikes, :capacity
 
+	def take_bike_from(container, bike)
+		accept(container.release(bike))
+	end
+
 	def collect_broken_bikes_from(station)
-		station.broken_bikes.each {|bike| accept(station.release(bike))}
+		station.broken_bikes.each {|bike| take_bike_from(station, bike)}
 	end
 
 	def collect_fixed_bikes_from(garage)
-		garage.working_bikes.each {|bike| accept(garage.release(bike))}
+		garage.working_bikes.each {|bike| take_bike_from(garage, bike)}
+	end
+
+
+	def give_bike_to(container, bike)
+		container.accept(release(bike))
 	end
 
 	def deposit_bikes_at(garage)
-		broken_bikes.each {|bike| garage.accept(release(bike))}
+		broken_bikes.each {|bike| give_bike_to(garage, bike) }
 	end
 
 
 	def deposit_fixed_bikes_at(docking_station)
-		working_bikes.each {|bike| docking_station.accept(release(bike))}
+		working_bikes.each {|bike| give_bike_to(docking_station, bike) }
 	end
+
 end

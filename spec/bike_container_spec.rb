@@ -70,8 +70,8 @@ shared_examples 'a bike container' do
 			expect(lambda { container.accept(working_bike) }).to raise_error('This container is full')
 		end
 
-		it 'should not release a bike if empty' do
-			expect(lambda { container.release(working_bike) }).to raise_error('There are no available bikes')
+		it "should raise an error before a non-bike is released" do
+			expect(lambda { container.release(garage) }).to raise_error("We can't give you what you're asking for")
 		end
 
 		it 'should raise an error before a non-bike is accepted' do

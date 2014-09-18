@@ -17,7 +17,7 @@ module BikeContainer
 	end
 
 	def accept(bike)
-		raise 'That aint no bike' if !bike.instance_of?(Bike)
+		raise 'That aint no bike' if (!bike.instance_of?(Bike))
 		raise 'This container is full' if full?
 		@bikes << bike
 	end
@@ -36,7 +36,7 @@ module BikeContainer
 	end
 
 	def release(bike)
-		raise 'There are no available bikes' if empty?
+		raise "We can't give you what you're asking for" if (!bikes.include?(bike))
 		@bikes.delete(bike)
 	end
 
