@@ -12,7 +12,7 @@ describe Garage do
 	end
 
 	it 'should fix all bikes' do
-		garage.broken_bikes = [broken_bike]
+		garage.bikes = [broken_bike]
 		expect(broken_bike).to receive(:fix!)
 		garage.fix_all_bikes
 	end
