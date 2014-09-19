@@ -24,7 +24,7 @@ describe 'a user' do
 
 		it 'should be able to break a bike' do
 			expect(working_bike).to receive(:break!)
-			user.fall_down(working_bike)
+			user.crash(working_bike)
 		end
 
 		it 'should not be able to rent a broken bike' do

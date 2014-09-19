@@ -19,9 +19,9 @@ class User
 		bikes.count == capacity
 	end
 
-	def fall_down(bike)
-		puts "Crash! You've broken your bike"
+	def crash(bike)
 		bike.break!
+		puts "Crash! You've broken your bike"
 	end
 
 end
