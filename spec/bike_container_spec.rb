@@ -15,7 +15,7 @@ shared_examples 'a bike container' do
 	context 'when created' do
 
 		it 'should not have any bikes' do
-			expect(container.bike_count).to eq 0
+			expect(container.bikes).to eq []
 		end
 
 		it 'should have a capacity' do
