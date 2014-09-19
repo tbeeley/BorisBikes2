@@ -3,7 +3,7 @@ require 'user'
 describe 'a user' do
 
 	let(:user) { User.new('Pom') }
-	let(:working_bike) { double :bike, instance_of?: 'Bike', broken?: false}
+	let(:working_bike) { double :bike, instance_of?: 'Bike', broken?: false, break!: nil}
 	let(:broken_bike) { double :bike, broken?: true, instance_of?: 'Bike' }
 	let(:garage) { double :garage }
 
@@ -15,11 +15,16 @@ describe 'a user' do
 
 	end
 
-	context 'renting and returning' do
+	context 'when renting and returning' do
 
 		it 'should be able to rent a bike' do
 			user.rent(working_bike)
 			expect(user.bikes).to eq [working_bike]
+		end
+
+		it 'should be able to break a bike' do
+			expect(working_bike).to receive(:break!)
+			user.fall_down(working_bike)
 		end
 
 		it 'should not be able to rent a broken bike' do
