@@ -6,9 +6,9 @@
 
 ##Objectives
 
-To demonstrate an understanding of **Test Driven Development** (TDD), **Object-Oriented Programming** (OOP) and **Object-Oriented Design** (OOD).
+To explore and improve my knowledge of **Test Driven Development** (TDD), **Object-Oriented Programming** (OOP) and **Object-Oriented Design** (OOD).
 
-The aim was to create a simple system for managing Boris Bikes in London. The following classes were used, Bike, User, DockingStation, Van and Garage. I used a BikeContainer module in order to extract the common functionality. 
+The aim was to create a simple system for managing Boris Bikes in London. I used the following classes: Bike, User, DockingStation, Van and Garage. I used a BikeContainer module in order to extract the common functionality. 
 
 ##Technologies
 
@@ -18,9 +18,13 @@ The aim was to create a simple system for managing Boris Bikes in London. The fo
 #How to run it
 
 git clone https://github.com/tbeeley/BorisBikes2.git
+
 cd BorisBikes2
+
 bundle
+
 irb
+
 require './files.rb'
 
 #How to run the tests
