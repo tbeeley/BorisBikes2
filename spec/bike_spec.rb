@@ -15,7 +15,7 @@ describe Bike do
 	context 'after creation' do
 
 		before do
-			bike.break!
+			bike.break
 		end
 
 		it 'should be able to be broken' do
@@ -23,7 +23,7 @@ describe Bike do
 		end
 
 		it 'should be able to be fixed' do
-			bike.fix!
+			bike.fix
 			expect(bike).not_to be_broken
 		end
 
