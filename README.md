@@ -17,20 +17,16 @@ The aim was to create a simple system for managing Boris Bikes in London. Using 
 
 #How to run it
 
-git clone https://github.com/tbeeley/BorisBikes2.git
-
-cd BorisBikes2
-
-bundle
-
-irb
-
-require './files.rb'
+- git clone https://github.com/tbeeley/BorisBikes2.git
+- cd BorisBikes2
+- bundle
+- irb
+- require './files.rb'
 
 #How to run the tests
 
-cd BorisBikes2
-rspec
+- cd BorisBikes2
+- rspec
 
 
 
