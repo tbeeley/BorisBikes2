@@ -4,17 +4,14 @@ module BikeContainer
 
 	def bikes
 		@bikes ||= []
-		#These are accessor methods. Modules cannot be instantiated, so these are necessary.
 	end
 
 	def capacity
 		@capacity ||= DEFAULT_CAPACITY
-		# The ||= symbol just signifies that it will default to DEFAULT_CAPACITY if @capacity is nil. It means @capacity = @capacity || DEFAULT_CAPACITY
 	end
 
 	def bike_count
 		bikes.count
-		#can't access bikes.count because it's a module
 	end
 
 	def full?
